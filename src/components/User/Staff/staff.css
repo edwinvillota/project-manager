@@ -1,0 +1,15 @@
+.tabs .tab a {
+  color: #212121;
+}
+
+.tab a.active {
+  color: #039be5;
+}
+
+.tabs .indicator {
+  background-color: #039be5;
+}
+
+.tabs .tab a:hover, .tabs .tab a.active {
+  color: #039be5;
+}

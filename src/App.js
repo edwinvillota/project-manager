@@ -1,83 +1,27 @@
-// import React, { Component } from 'react';
-// import logo from './logo.svg';
-// import './App.css';
-//
-// class App extends Component {
-//   render() {
-//     return (
-//       <div className="App">
-//         <div className="App-header">
-//           <img src={logo} className="App-logo" alt="logo" />
-//           <h2>Welcome to React</h2>
-//         </div>
-//         <p className="App-intro">
-//           To get started, edit <code>src/App.js</code> and save to reload.
-//         </p>
-//       </div>
-//     );
-//   }
-// }
-//
-// export default App;
-
 import React from 'react'
 import {
   BrowserRouter as Router,
-  Route,
-  Link
+  Route
 } from 'react-router-dom'
 
 // SideNav
-import SideNav from './components/SideNav/SideNav';
+import SideNav from './components/SideNav/SideNav'
 
 // Pages
 
-import Home from './components/Home/home';
-import Login from './components/Login/login';
-
-const Topic = ({ match }) => (
-  <div>
-    <h3>{match.params.topicId}</h3>
-  </div>
-)
-
-const Topics = ({ match }) => (
-  <div>
-    <h2>Topics</h2>
-    <ul>
-      <li>
-        <Link to={`${match.url}/rendering`}>
-          Rendering with React
-        </Link>
-      </li>
-      <li>
-        <Link to={`${match.url}/components`}>
-          Components
-        </Link>
-      </li>
-      <li>
-        <Link to={`${match.url}/props-v-state`}>
-          Props v. State
-        </Link>
-      </li>
-    </ul>
-
-    <Route path={`${match.url}/:topicId`} component={Topic}/>
-    <Route exact path={match.url} render={() => (
-      <h3>Please select a topic.</h3>
-    )}/>
-  </div>
-)
+import Home from './components/Home/home'
+import Login from './components/Login/login'
+import User from './components/User/user'
+import Staff from './components/User/Staff/staff'
 
 const App = () => (
   <Router>
     <div>
-      <SideNav>
-
-      </SideNav>
-      <Route exact path="/" component={Home}/>
-      <Route path="/login" component={Login}/>
-      <Route path="/topics" component={Topics}/>
+      <SideNav />
+      <Route exact path='/' component={Home} />
+      <Route path='/login' component={Login} />
+      <Route path='/user' component={User} />
+      <Route path='/personal' component={Staff} />
     </div>
   </Router>
 )
