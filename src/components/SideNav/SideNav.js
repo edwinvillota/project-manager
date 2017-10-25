@@ -42,6 +42,7 @@ class SideMenu extends Component {
             user={this.state.user}
           />
           <SideNavItem href='#!icon' icon='cloud'><Link to='/'>Home</Link></SideNavItem>
+          <SideNavItem href='#!icon' icon='apps'><Link to='/user'>Administrar</Link></SideNavItem>
           <SideNavItem href='#!icon' icon='person'><Link to='/Login'>Login</Link></SideNavItem>
         </SideNav>
       </div>

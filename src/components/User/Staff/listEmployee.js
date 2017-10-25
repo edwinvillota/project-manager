@@ -10,30 +10,39 @@ class ListEmployee extends Component {
   }
 
   componentWillMount () {
+    const token = localStorage.getItem('token')
     const endpoint = 'http://localhost:3500/api/staff'
     const fetchData = {
       method: 'GET',
-      mode: 'cors'
+      mode: 'cors',
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
     }
 
     fetch(endpoint, fetchData)
       .then((resp) => resp.json())
       .then(data => {
-        this.setState({
-          employees: data
-        })
+        if (data) {
+          this.setState({
+            employees: data
+          })
+        }
       })
   }
 
   render () {
-    const names = this.state.employees.map(e => (
-      <tr key={e._id}>
-        <td>{e.name}</td>
-        <td>{e.lastname}</td>
-        <td>{e.appointment}</td>
-        <td>{e.status}</td>
-      </tr>
-    ))
+    let names
+    if (this.state.employees.length) {
+      names = this.state.employees.map(e => (
+        <tr key={e._id}>
+          <td>{e.name}</td>
+          <td>{e.lastname}</td>
+          <td>{e.appointment}</td>
+          <td>{e.status}</td>
+        </tr>
+      ))
+    }
     return (
       <Table>
         <thead>
